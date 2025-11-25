@@ -1,0 +1,67 @@
+
+        :root {
+            --primary: #e67e22;
+            --secondary: #2c3e50;
+            --accent: #27ae60;
+            --bg: #f4f4f4;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        body { background-color: var(--bg); padding-bottom: 80px; }
+
+        /* Header */
+        header { background: var(--secondary); color: white; padding: 1rem; position: sticky; top: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; box-shadow: 0 2px 5px rgba(0,0,0,0.2); }
+        .logo { font-size: 1.5rem; font-weight: bold; color: var(--primary); }
+        .nav-btn { background: none; border: 1px solid white; color: white; padding: 5px 10px; border-radius: 5px; cursor: pointer; font-size: 0.9rem; font-weight: bold; }
+        .nav-btn:hover { background: rgba(255,255,255,0.2); }
+
+        /* Hero Section */
+        .hero { background: url('https://images.unsplash.com/photo-1543339308-43e59d6b73a6?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover; height: 200px; display: flex; align-items: center; justify-content: center; text-align: center; color: white; text-shadow: 2px 2px 4px rgba(0,0,0,0.7); }
+        .hero h1 { font-size: 2.5rem; }
+
+        /* Container */
+        .container { max-width: 1200px; margin: 20px auto; padding: 0 15px; }
+
+        /* Grid de Produtos */
+        .menu-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; }
+        .card { background: white; border-radius: 10px; overflow: hidden; box-shadow: 0 3px 6px rgba(0,0,0,0.1); transition: transform 0.2s; }
+        .card:hover { transform: translateY(-5px); }
+        .card-img { height: 180px; width: 100%; object-fit: cover; }
+        .card-body { padding: 15px; }
+        .card-title { font-size: 1.2rem; margin-bottom: 5px; color: var(--secondary); }
+        .card-desc { color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+        .card-price { color: var(--primary); font-weight: bold; font-size: 1.2rem; }
+        .card-actions { display: flex; justify-content: space-between; align-items: center; margin-top: 10px; }
+        .btn-add { background: var(--primary); color: white; border: none; padding: 8px 15px; border-radius: 20px; cursor: pointer; }
+        .btn-add:hover { background: #d35400; }
+
+        /* Carrinho Flutuante */
+        .fab-cart { position: fixed; bottom: 20px; right: 20px; background: var(--accent); color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; box-shadow: 0 4px 8px rgba(0,0,0,0.3); cursor: pointer; z-index: 101; }
+        .badge { position: absolute; top: -5px; right: -5px; background: red; color: white; border-radius: 50%; padding: 5px 8px; font-size: 12px; font-weight: bold; }
+
+        /* Modais */
+        .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 200; align-items: center; justify-content: center; }
+        .modal-content { background: white; width: 95%; max-width: 600px; padding: 20px; border-radius: 10px; max-height: 90vh; overflow-y: auto; }
+        .modal-header { display: flex; justify-content: space-between; margin-bottom: 15px; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .close-btn { font-size: 1.5rem; cursor: pointer; }
+
+        /* Inputs e Resumo */
+        .input-field { width: 100%; padding: 10px; margin-bottom: 10px; border: 1px solid #ddd; border-radius: 5px; font-size: 1rem; }
+        .section-title { margin: 15px 0 10px; color: var(--secondary); font-size: 1.1rem; border-bottom: 2px solid #eee; padding-bottom: 5px; }
+        .price-row { display: flex; justify-content: space-between; margin-bottom: 5px; color: #666; }
+        .total-row { display: flex; justify-content: space-between; font-weight: bold; font-size: 1.3rem; color: var(--primary); margin-top: 10px; border-top: 1px solid #ddd; padding-top: 10px; }
+
+        /* Botão Zap */
+        .btn-zap { background: #25D366; color: white; border: none; width: 100%; padding: 15px; font-size: 1.1rem; border-radius: 5px; cursor: pointer; margin-top: 10px; display: flex; align-items: center; justify-content: center; gap: 10px; transition: 0.3s; }
+        .btn-zap:hover { background: #1ebc57; transform: scale(1.02); }
+
+        /* Painel Admin & POS */
+        .admin-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 10px; margin-bottom: 20px; }
+        .admin-btn { padding: 20px; border: 1px solid #ddd; border-radius: 8px; text-align: center; cursor: pointer; background: #f9f9f9; transition: 0.2s; }
+        .admin-btn:hover, .admin-btn.active { background: var(--secondary); color: white; }
+        .admin-section { display: none; padding: 15px; border: 1px solid #ddd; border-radius: 5px; margin-top: 10px; }
+        .active-section { display: block; }
+        
+        .pos-screen { background: #000; color: #0f0; padding: 20px; font-family: 'Courier New', Courier, monospace; border-radius: 5px; margin-bottom: 10px; min-height: 150px; max-height: 200px; overflow-y: auto; }
+        .scan-btn { background: var(--secondary); color: white; width: 100%; padding: 10px; margin-top: 5px; cursor: pointer; border: none; border-radius: 5px;}
+ 

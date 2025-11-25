@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KR Marmitaria - Sabor Caseiro</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <header>
+        <div class="logo"><i class="fas fa-utensils"></i> KR Marmitaria</div>
+        <div>
+            <button class="nav-btn" onclick="openAdmin()">Login Func/Admin</button>
+        </div>
+    </header>
+
+    <div class="hero">
+        <div>
+            <h1>O Verdadeiro Tempero</h1>
+            <p>Peça agora e receba quentinho!</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2 style="margin-bottom: 15px; border-left: 5px solid var(--primary); padding-left: 10px;">Marmitex do Dia</h2>
+        <div class="menu-grid" id="marmitas-grid"></div>
+
+        <h2 style="margin: 30px 0 15px; border-left: 5px solid var(--accent); padding-left: 10px;">Bebidas Geladas</h2>
+        <div class="menu-grid" id="bebidas-grid"></div>
+    </div>
+
+    <div class="fab-cart" onclick="toggleCart()">
+        <i class="fas fa-shopping-basket"></i>
+        <span class="badge" id="cart-count">0</span>
+    </div>
+
+    <div class="modal" id="cart-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Seu Pedido</h3>
+                <span class="close-btn" onclick="toggleCart()">&times;</span>
+            </div>
+            
+            <div id="cart-items" style="max-height: 150px; overflow-y: auto; margin-bottom: 15px;">
+                <p style="text-align: center; color: #888; padding: 20px;">Seu carrinho está vazio.</p>
+            </div>
+
+            <div style="background: #f9f9f9; padding: 10px; border-radius: 5px;">
+                <div class="price-row">
+                    <span>Subtotal:</span>
+                    <span id="cart-subtotal">R$ 0,00</span>
+                </div>
+                <div class="price-row">
+                    <span>Taxa de Entrega:</span>
+                    <span id="delivery-fee-display">R$ 0,00</span>
+                </div>
+                <div class="total-row">
+                    <span>TOTAL FINAL:</span>
+                    <span id="cart-total">R$ 0,00</span>
+                </div>
+            </div>
+
+            <h4 class="section-title"><i class="fas fa-map-marker-alt"></i> Dados para Entrega</h4>
+            
+            <input type="text" id="client-name" class="input-field" placeholder="Seu Nome Completo">
+            <input type="tel" id="client-phone" class="input-field" placeholder="Seu WhatsApp (DDD + Número)">
+            
+            <label style="font-size: 0.9rem; color: #666;">Selecione seu Bairro/Região:</label>
+            <select id="delivery-zone" class="input-field" onchange="updateTotal()">
+                <option value="0">Retirar no Balcão (Grátis)</option>
+                <option value="5">Centro e Arredores (R$ 5,00)</option>
+                <option value="8">Bairros Zona Norte (R$ 8,00)</option>
+                <option value="10">Bairros Zona Sul (R$ 10,00)</option>
+                <option value="15">Área Industrial / Distante (R$ 15,00)</option>
+            </select>
+
+            <input type="text" id="client-address" class="input-field" placeholder="Endereço Completo (Rua, Nº e Referência)">
+
+            <h4 class="section-title"><i class="fas fa-wallet"></i> Pagamento</h4>
+            <select id="payment-method" class="input-field">
+                <option value="Pix">Pix (Chave: 12.345.678/0001-99)</option>
+                <option value="Cartão na Entrega">Cartão (Vou levar a maquininha)</option>
+                <option value="Dinheiro">Dinheiro (Precisa de troco?)</option>
+            </select>
+
+            <textarea id="obs" class="input-field" placeholder="Observações? (Ex: Sem cebola, troco para 50...)" style="height: 60px;"></textarea>
+
+            <button class="btn-zap" onclick="checkout()">
+                <i class="fab fa-whatsapp"></i> Enviar Pedido no Zap
+            </button>
+        </div>
+    </div>
+
+    <div class="modal" id="admin-modal">
+        <div class="modal-content" style="max-width: 800px;">
+            <div class="modal-header">
+                <h3>Sistema KR - Gestão & Caixa</h3>
+                <span class="close-btn" onclick="closeAdmin()">&times;</span>
+            </div>
+            
+            <div class="admin-grid">
+                <div class="admin-btn active" onclick="switchTab('pos')"><i class="fas fa-cash-register"></i> Caixa (PDV)</div>
+                <div class="admin-btn" onclick="switchTab('kitchen')"><i class="fas fa-print"></i> Cozinha (Pedidos)</div>
+                <div class="admin-btn" onclick="switchTab('products')"><i class="fas fa-utensils"></i> Produtos</div>
+                <div class="admin-btn" onclick="switchTab('finance')"><i class="fas fa-chart-line"></i> Financeiro</div>
+            </div>
+
+            <div id="tab-pos" class="admin-section active-section">
+                <h4>Frente de Caixa</h4>
+                <div class="pos-screen" id="pos-display">
+                    > SISTEMA INICIADO...<br>
+                    > CAIXA LIVRE - OPERADOR: JOÃO
+                </div>
+                <button class="scan-btn" onclick="simulateScan()"><i class="fas fa-barcode"></i> Simular Leitura de Código de Barras</button>
+                <div style="margin-top: 10px; text-align: right;">
+                    <button class="btn-add" style="background: #27ae60;" onclick="alert('Venda finalizada! Nota Fiscal emitida.')">Finalizar Venda (F10)</button>
+                </div>
+            </div>
+
+            <div id="tab-kitchen" class="admin-section">
+                <h4>Fila de Impressão (Cozinha)</h4>
+                <div style="background: #fff3cd; padding: 10px; margin-bottom: 5px; border-left: 4px solid #ffc107;">
+                    <strong>Pedido #204</strong> - 1x Marmita G (Bife Acebolado)<br>
+                    <small>Status: Em preparação</small>
+                    <button style="float: right; cursor: pointer;" onclick="alert('Enviando para impressora térmica...')"><i class="fas fa-print"></i> Imprimir</button>
+                </div>
+            </div>
+
+             <div id="tab-finance" class="admin-section">
+                <h4>Gestão Financeira</h4>
+                <div style="display: flex; gap: 10px; margin-bottom: 15px;">
+                    <div style="background: #eee; padding: 10px; flex: 1; text-align: center; border-radius: 5px;">
+                        <small>Vendas Hoje</small><br><strong style="color: green;">R$ 1.250,00</strong>
+                    </div>
+                    <div style="background: #ffcccc; padding: 10px; flex: 1; text-align: center; border-radius: 5px;">
+                        <small>Contas a Pagar</small><br><strong style="color: red;">R$ 450,00</strong>
+                    </div>
+                </div>
+                <button class="btn-add" style="width: 100%; margin-bottom: 5px;">Gerenciar Fornecedores</button>
+            </div>
+
+             <div id="tab-products" class="admin-section">
+                <h4>Gerenciar Cardápio</h4>
+                <p>Lista de itens cadastrados no banco de dados...</p>
+                <button class="btn-add">+ Novo Produto</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
