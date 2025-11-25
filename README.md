@@ -40,7 +40,7 @@ O projeto foi desenvolvido focado em **performance** e **portabilidade**, rodand
 
 Você pode acessar a versão online agora mesmo através do GitHub Pages:
 
-🔗 **[CLIQUE AQUI PARA ACESSAR O SISTEMA](SEU_LINK_DO_GITHUB_PAGES_AQUI)**
+🔗 **[CLIQUE AQUI PARA ACESSAR O SISTEMA](https://galvaomaisti.github.io/kr-marmitaria-mvp/)**
 
 ### Passo a Passo da Demo:
 1.  **Faça um Pedido:** Adicione itens, escolha o bairro e clique em "Enviar no Zap".
@@ -61,4 +61,4 @@ Para a versão 2.0 (Produção), o sistema será escalado para uma arquitetura f
 
 ---
 
-Made with 🧡 by [Seu Nome Aqui]
+Made with 🧡 by [Galvão]
