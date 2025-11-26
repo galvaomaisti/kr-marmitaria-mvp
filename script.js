@@ -113,7 +113,7 @@
             msg += `\n\nAguardo confirmação!`;
 
             // >>>> COLOQUE O NUMERO AQUI (55 + DDD + NUMERO) <<<<
-            const numDestino = "5541999999999"; 
+            const numDestino = "5541997199359"; 
             
             window.open(`https://wa.me/${numDestino}?text=${encodeURIComponent(msg)}`, '_blank');
         }
@@ -145,4 +145,5 @@
         window.onclick = function(ev) {
             if (ev.target.classList.contains('modal')) ev.target.style.display = "none";
         }
+
    
