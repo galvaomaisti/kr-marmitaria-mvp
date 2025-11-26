@@ -113,7 +113,7 @@
             msg += `\n\nAguardo confirmação!`;
 
             // >>>> COLOQUE O NUMERO AQUI (55 + DDD + NUMERO) <<<<
-            const numDestino = "5541997199359"; 
+            const numDestino = "5541985220838"; 
             
             window.open(`https://wa.me/${numDestino}?text=${encodeURIComponent(msg)}`, '_blank');
         }
@@ -147,3 +147,4 @@
         }
 
    
+
