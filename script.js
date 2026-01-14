@@ -13,13 +13,14 @@ const produtos = [
 ];
 
 const deliveryFees = {
-  "Centro": 5,
-  "Eucaliptos": 7,
-  "Gralha-Azul": 7,
-  "Nacoes": 8,
-  "Pioneiros": 8,
-  "Santa-Terezinha": 9,
-  "Estados": 9,
+  "Retirada-no-Balcão(Gratis)": 0,
+  "Centro": 12,
+  "Eucaliptos": 12,
+  "Gralha-Azul": 12,
+  "Nacoes": 12,
+  "Pioneiros": 10,
+  "Santa-Terezinha": 5,
+  "Estados": 5,
   "Veneza": 10,
   "Iguacu-1": 10,
   "Iguacu-2": 10,
@@ -128,5 +129,6 @@ function closeAdmin() {
         }
 
    
+
 
 
