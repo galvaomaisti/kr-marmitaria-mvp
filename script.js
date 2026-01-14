@@ -13,7 +13,6 @@ const produtos = [
 ];
 
 const deliveryFees = {
-  "Retirada-no-Balcão(Gratis)": 0,
   "Centro": 12,
   "Eucaliptos": 12,
   "Gralha-Azul": 12,
@@ -129,6 +128,7 @@ function closeAdmin() {
         }
 
    
+
 
 
 
